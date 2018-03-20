@@ -15,13 +15,26 @@ class Board extends React.Component {
         super(props)
         this.state = {
             squares: Array(9).fill(null),
+            xIsNext: true,
         }
     }
 
     handleClick(i) {
         const squares = this.state.squares.slice()
-        squares[i] = 'X'
-        this.setState({squares: squares})
+        var nextPlayer = true
+
+        if (this.state.xIsNext) {
+            squares[i] = 'X'
+            nextPlayer = false
+        } else {
+            squares[i] = 'O'
+            nextPlayer = true
+            
+        }
+        this.setState({
+            squares: squares,
+            xIsNext: nextPlayer,
+        })
     }
 
     renderSquare(i) {
