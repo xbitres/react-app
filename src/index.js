@@ -21,19 +21,12 @@ class Board extends React.Component {
 
     handleClick(i) {
         const squares = this.state.squares.slice()
-        var nextPlayer = true
 
-        if (this.state.xIsNext) {
-            squares[i] = 'X'
-            nextPlayer = false
-        } else {
-            squares[i] = 'O'
-            nextPlayer = true
+        squares[i] = this.state.xIsNext ? 'X' : 'O'
             
-        }
         this.setState({
             squares: squares,
-            xIsNext: nextPlayer,
+            xIsNext: !this.state.xIsNext,
         })
     }
 
